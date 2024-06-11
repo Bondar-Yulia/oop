@@ -1,0 +1,68 @@
+.patient-form {
+    max-width: 500px;
+    margin: auto;
+  }
+  
+  .patient-form h2 {
+    text-align: center;
+  }
+  
+  .patient-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .patient-form form > div {
+    margin-bottom: 10px;
+  }
+  
+  .patient-form label {
+    font-weight: bold;
+  }
+  
+  .patient-form input {
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  .patient-form button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .patient-list {
+    max-width: 700px;
+    margin: auto;
+  }
+  
+  .patient-list h2 {
+    text-align: center;
+  }
+  
+  .patient-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .patient-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+  }
+  
+  .patient-list button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  

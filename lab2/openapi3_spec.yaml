@@ -1,0 +1,527 @@
+openapi: 3.0.1
+info:
+  title: Hospital Management API
+  description: API for managing a hospital system where doctors diagnose and prescribe treatments to patients, nurses and doctors administer treatments, and patient discharge records the final diagnosis.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Local server
+paths:
+  /patients:
+    get:
+      summary: Get all patients
+      operationId: getPatients
+      responses:
+        '200':
+          description: A list of patients
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Patient'
+    post:
+      summary: Create a new patient
+      operationId: createPatient
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Patient'
+      responses:
+        '201':
+          description: Patient created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Patient'
+  /patients/{id}:
+    get:
+      summary: Get a patient by ID
+      operationId: getPatientById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A patient
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Patient'
+        '404':
+          description: Patient not found
+    put:
+      summary: Update a patient
+      operationId: updatePatient
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Patient'
+      responses:
+        '200':
+          description: Patient updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Patient'
+        '404':
+          description: Patient not found
+    delete:
+      summary: Delete a patient
+      operationId: deletePatient
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Patient deleted
+        '404':
+          description: Patient not found
+
+  /doctors:
+    get:
+      summary: Get all doctors
+      operationId: getDoctors
+      responses:
+        '200':
+          description: A list of doctors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Doctor'
+    post:
+      summary: Create a new doctor
+      operationId: createDoctor
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Doctor'
+      responses:
+        '201':
+          description: Doctor created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Doctor'
+  /doctors/{id}:
+    get:
+      summary: Get a doctor by ID
+      operationId: getDoctorById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A doctor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Doctor'
+        '404':
+          description: Doctor not found
+    put:
+      summary: Update a doctor
+      operationId: updateDoctor
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Doctor'
+      responses:
+        '200':
+          description: Doctor updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Doctor'
+        '404':
+          description: Doctor not found
+    delete:
+      summary: Delete a doctor
+      operationId: deleteDoctor
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Doctor deleted
+        '404':
+          description: Doctor not found
+
+  /nurses:
+    get:
+      summary: Get all nurses
+      operationId: getNurses
+      responses:
+        '200':
+          description: A list of nurses
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Nurse'
+    post:
+      summary: Create a new nurse
+      operationId: createNurse
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Nurse'
+      responses:
+        '201':
+          description: Nurse created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Nurse'
+  /nurses/{id}:
+    get:
+      summary: Get a nurse by ID
+      operationId: getNurseById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A nurse
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Nurse'
+        '404':
+          description: Nurse not found
+    put:
+      summary: Update a nurse
+      operationId: updateNurse
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Nurse'
+      responses:
+        '200':
+          description: Nurse updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Nurse'
+        '404':
+          description: Nurse not found
+    delete:
+      summary: Delete a nurse
+      operationId: deleteNurse
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Nurse deleted
+        '404':
+          description: Nurse not found
+
+  /appointments:
+    get:
+      summary: Get all appointments
+      operationId: getAppointments
+      responses:
+        '200':
+          description: A list of appointments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Appointment'
+    post:
+      summary: Create a new appointment
+      operationId: createAppointment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Appointment'
+      responses:
+        '201':
+          description: Appointment created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+  /appointments/{id}:
+    get:
+      summary: Get an appointment by ID
+      operationId: getAppointmentById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: An appointment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+        '404':
+          description: Appointment not found
+    put:
+      summary: Update an appointment
+      operationId: updateAppointment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Appointment'
+      responses:
+        '200':
+          description: Appointment updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+        '404':
+          description: Appointment not found
+    delete:
+      summary: Delete an appointment
+      operationId: deleteAppointment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Appointment deleted
+        '404':
+          description: Appointment not found
+
+  /diagnoses:
+    get:
+      summary: Get all diagnoses
+      operationId: getDiagnoses
+      responses:
+        '200':
+          description: A list of diagnoses
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Diagnosis'
+    post:
+      summary: Create a new diagnosis
+      operationId: createDiagnosis
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Diagnosis'
+      responses:
+        '201':
+          description: Diagnosis created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Diagnosis'
+  /diagnoses/{id}:
+    get:
+      summary: Get a diagnosis by ID
+      operationId: getDiagnosisById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A diagnosis
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Diagnosis'
+        '404':
+          description: Diagnosis not found
+    put:
+      summary: Update a diagnosis
+      operationId: updateDiagnosis
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Diagnosis'
+      responses:
+        '200':
+          description: Diagnosis updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Diagnosis'
+        '404':
+          description: Diagnosis not found
+    delete:
+      summary: Delete a diagnosis
+      operationId: deleteDiagnosis
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Diagnosis deleted
+        '404':
+          description: Diagnosis not found
+
+components:
+  schemas:
+    Patient:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        date_of_birth:
+          type: string
+          format: date
+        address:
+          type: string
+        phone_number:
+          type: string
+      required:
+        - name
+        - date_of_birth
+    Doctor:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        specialty:
+          type: string
+      required:
+        - name
+    Nurse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+      required:
+        - name
+    Appointment:
+      type: object
+      properties:
+        id:
+          type: integer
+        patient_id:
+          type: integer
+        doctor_id:
+          type: integer
+        nurse_id:
+          type: integer
+          nullable: true
+        type:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+        appointment_date:
+          type: string
+          format: date-time
+      required:
+        - patient_id
+        - doctor_id
+        - type
+        - status
+        - appointment_date
+    Diagnosis:
+      type: object
+      properties:
+        id:
+          type: integer
+        patient_id:
+          type: integer
+        doctor_id:
+          type: integer
+        diagnosis:
+          type: string
+        final_diagnosis:
+          type: boolean
+      required:
+        - patient_id
+        - doctor_id
+        - diagnosis

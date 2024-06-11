@@ -1,0 +1,68 @@
+.doctor-form {
+    max-width: 500px;
+    margin: auto;
+  }
+  
+  .doctor-form h2 {
+    text-align: center;
+  }
+  
+  .doctor-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .doctor-form form > div {
+    margin-bottom: 10px;
+  }
+  
+  .doctor-form label {
+    font-weight: bold;
+  }
+  
+  .doctor-form input {
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  .doctor-form button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .doctor-list {
+    max-width: 700px;
+    margin: auto;
+  }
+  
+  .doctor-list h2 {
+    text-align: center;
+  }
+  
+  .doctor-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .doctor-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+  }
+  
+  .doctor-list button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
